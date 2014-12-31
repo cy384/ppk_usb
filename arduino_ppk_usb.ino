@@ -240,7 +240,7 @@ void loop()
 
       char key_code = 0;
 
-      if (fn_key_down)
+      if (fn_key_down && fn_key_map[key_byte & MAP_MASK])
       {
         key_code += fn_key_map[key_byte & MAP_MASK];
       }

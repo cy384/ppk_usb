@@ -14,7 +14,7 @@ The only external component you will need is an approximately 10K ohm pull-down 
 
 key mapping
 -----------
-I've mapped the keys according to the spec and what's printed on the keyboard, excepting the keys that don't map logically to anything on a standard keyboard (e.g. the ones for starting Palm OS apps).  A few additions: Fn+1 for Escape, Fn+up for page up, Fn+down for page down, Fn+left for home, and Fn+right for end.  Cmd is mapped to super (aka Windows/Apple key).  Adding to or modifying the mapping is straightforward, just edit the config_keymap and config_fnkeymap functions.
+I've mapped the keys according to the spec and what's printed on the keyboard, excepting the keys that don't map logically to anything on a standard keyboard (e.g. the ones for starting Palm OS apps).  A few additions: Fn+1 for Escape, Fn+up for page up, Fn+down for page down, Fn+left for home, and Fn+right for end.  Unmapped Fn keypresses fall through to the normal mapping.  Cmd is mapped to super (aka Windows/Apple key).  Adding to or modifying the mapping is straightforward, just edit the config_keymap and config_fnkeymap functions.
 
 caveats
 -------
