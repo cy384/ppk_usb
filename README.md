@@ -18,7 +18,9 @@ I've mapped the keys according to the spec and what's printed on the keyboard, e
 
 caveats
 -------
-Due to the way I implemented the Fn key, it can have slightly weird behavior if you press a normal key, then Fn, then another key, then release them in a certain order.  This could be fixed by keeping a list or something of keypresses sent.  I believe I properly implemented management of the low power mode, but found that the keyboard fell asleep regardless, so instead this code just reboots the keyboard periodically, as per the TIMEOUT value.  I have only tested on the Palm versions with dark grey metallic (p/n 3C10439) and black plastic (p/n P10713U) outer shells.
+* Due to the way I implemented the Fn key, it can have slightly weird behavior if you press a normal key, then Fn, then another key, then release them in a certain order.  This could be fixed by keeping a list or something of keypresses sent.
+* I believe I properly implemented management of the low power mode, but found that the keyboard fell asleep regardless, so instead this code just reboots the keyboard periodically, as per the TIMEOUT value.
+* I have only tested on the Palm versions with dark grey metallic (p/n 3C10439) and black plastic (p/n P10713U) outer shells.
 
 license
 -------
