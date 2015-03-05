@@ -1,19 +1,5 @@
 // a 3d printable adapter for palm-III era devices
 
-/*module main_hull()
-{
-	cube(size = [30.00, 10.00, 10.00], center = true);
-}
-
-module socket()
-{
-	translate ([0, 0, 3.30]) union()
-	{
-		cube(size = [26.50, 7.00, 15.00], center = true);
-		
-	};
-}
-*/
 module pin()
 {
 	translate([-1.95/2, -0.8, 0])
