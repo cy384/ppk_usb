@@ -1,4 +1,4 @@
-// a 3d printable adapter for palm-III era devices
+// a 3d printable adapter for palm-V era devices
 
 module pin()
 {
