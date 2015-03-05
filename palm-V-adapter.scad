@@ -45,7 +45,7 @@ module hole()
 	}
 }
 
-module palmvadapter()
+module palm_v_adapter()
 {
 	difference()
 	{
@@ -72,4 +72,4 @@ module palmvadapter()
 	}
 }
 
-palmvadapter();
+palm_v_adapter();

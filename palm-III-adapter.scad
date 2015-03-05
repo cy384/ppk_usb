@@ -45,7 +45,7 @@ module hole()
 	}
 }
 
-module palmiiiadapter()
+module palm_iii_adapter()
 {
 	difference()
 	{
@@ -75,4 +75,4 @@ module palmiiiadapter()
 	}
 }
 
-palmiiiadapter();
+palm_iii_adapter();
