@@ -9,8 +9,8 @@ module pro_micro_bottom()
 	{
 		difference()
 		{
-			cube([36, 22, 6.5], center=true);
-			translate([0, 0, 1.5]) { cube([34, 20, 5], center=true); };
+			cube([36, 21, 6.5], center=true);
+			translate([0, 0, 1.5]) { cube([34, 19, 5], center=true); };
 			translate([17, 0, 1]) { cube([6, 9.1, 4.5], center=true); };
 		}
 		
@@ -29,7 +29,7 @@ module pro_micro_top_v()
 		{
 			hull()
 			{
-				translate([0, 10, 0]) { cube([36, 22, 0.4], center=true); };
+				translate([0, 10, 0]) { cube([36, 21, 0.4], center=true); };
 				translate([0, 5, 5]) { cube([30, 8, 1.5], center=true); };
 			}
 		
@@ -52,13 +52,13 @@ module pro_micro_top_iii()
 		{
 			hull()
 			{
-				cube([36, 22, 0.4], center=true);
+				cube([36, 21, 0.4], center=true);
 				translate([0, 2, 5]) { cube([30, 14, 1.5], center=true); };
 			}
 		
 			hull()
 			{
-				translate([0, 8, 0]) { cube([24, 5, 1.5], center=true); };
+				translate([0, 7, 0]) { cube([24, 5, 1.5], center=true); };
 				translate([0, 6, 5]) { cube([18.7, 5, 1.5], center=true); };
 			}
 		}
