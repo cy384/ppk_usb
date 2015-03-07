@@ -9,14 +9,14 @@ module pro_micro_bottom()
 	{
 		difference()
 		{
-			cube([36, 21, 6.5], center=true);
-			translate([0, 0, 1.5]) { cube([34, 19, 5], center=true); };
-			translate([17, 0, 1]) { cube([6, 9.1, 4.5], center=true); };
+			cube([36, 21, 7.5], center=true);
+			translate([0, 0, 1.5]) { cube([34, 19, 6], center=true); };
+			translate([17, 0, 1.5]) { cube([6, 9.1, 4.75], center=true); };
 		}
 		
 		for (i = [-1, 1], j = [-1, 1])
 		{
-			translate([i*17, j*9, 0.5]) { cube([2, 2, 3], center=true); };
+			translate([i*17, j*9, 0]) { cube([2, 2, 4], center=true); };
 		}
 	}
 }
