@@ -11,13 +11,15 @@
 #include <SoftwareSerial.h>
 
 // pin definitions
-#define RX_PIN   9
-#define DCD_PIN  7
-#define VCC_PIN 10
-#define RTS_PIN 14
+#define VCC_PIN       7
+#define RX_PIN        8
+#define RTS_PIN       5
+#define DCD_PIN       4
+#define GND_PIN       2
+#define PULLDOWN_PIN 15
 
 // set this to any unused pin
-#define TX_PIN  11
+#define TX_PIN       11
 
 // convenience masks
 #define UPDOWN_MASK 0b10000000
@@ -174,12 +176,19 @@ void config_fnkeymap()
 
 void boot_keyboard()
 {
-  pinMode(RX_PIN, INPUT);
   pinMode(VCC_PIN, OUTPUT);
+  pinMode(GND_PIN, OUTPUT);
+  pinMode(PULLDOWN_PIN, OUTPUT);
+
+  pinMode(RX_PIN, INPUT);
   pinMode(DCD_PIN, INPUT);
   pinMode(RTS_PIN, INPUT);
 
+  digitalWrite(VCC_PIN, LOW);
+  digitalWrite(GND_PIN, LOW);
+  digitalWrite(PULLDOWN_PIN, LOW);
   digitalWrite(VCC_PIN, HIGH);
+
   keyboard_serial.begin(9600);
   keyboard_serial.listen();
 
