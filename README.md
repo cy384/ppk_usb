@@ -2,10 +2,11 @@ palm keyboard adapter
 =====================
 This code is the software and 3D printable hardware for using an ATMega32U4-based Arduino-compatible device to adapt a Palm Portable Keyboard (PPK) to function as a USB HID.  The "Think Outside(TM) Hardware and Electronics Reference for the Palm(R) and Stowaway(TM) Portable Keyboards Revision 1.1" document was used as a reference, which I found [here](http://www.splorp.com/pdf/stowawayhwref.pdf).  For more information about my work with the PPK, see [my writeup](http://www.cy384.com/projects/palm-keyboard.html).
 
-![current prototype](http://i.imgur.com/9rrlEwk.jpg)
+![ppk demo](http://i.imgur.com/oBWkVBG.jpg)
 
 hardware variants
 -----------------
+![ppk headers](http://i.imgur.com/w6m0yrR.jpg)
 There are at least two physically incompatible variants of the PPK: one for the Palm III series (black plastic, p/n P10713U), and one for the Palm V series (dark grey metal, p/n 3C10439).  `palm-III-adapter.scad` fits the Palm III PPKs, and `palm-V-adapter.scad` fits the Palm V PPKs.
 
 3d printed parts
