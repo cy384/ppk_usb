@@ -62,7 +62,7 @@ Open up `arduino_ppk_usb.ino` and edit HARDWARE_VERSION to match your keyboard (
 
 Unplug/replug the cable and it should be fully functional.
 
-Once you're sure it's working, stick the 3D printed cover piece on using glue, tape, friction welding with a spare bit of plastic filament, or nothing.
+Once you're sure it's working, stick the 3D printed cover piece on using glue, tape, [friction welding with a spare bit of plastic filament](http://hackaday.com/2014/12/30/3d-printing-technique-friction-welding/), or nothing.
 
 key mapping
 -----------
