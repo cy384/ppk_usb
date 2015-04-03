@@ -67,7 +67,7 @@ module pro_micro_top_iii()
 	}
 }
 
-translate([0, 30, 3.25]) { pro_micro_bottom(); };
+translate([0, 30, 3.75]) { pro_micro_bottom(); };
 
 translate([0, -40, 0.2]) { pro_micro_top_v(); };
 
