@@ -58,7 +58,7 @@ DO NOT solder or trim pin 3 yet.  Solder pins 2, 4, 5, and 6.  Clip the extra wi
 
 programming
 -----------
-Open up `arduino_ppk_usb.ino` and edit HARDWARE_VERSION to match your keyboard (5 for V, or 3 for III).  Set the device to Arduino Leonardo in the IDE, plug in your cable, and hit upload.  If it can't find a device, you may need to reset it first by grounding the RST pin.
+Open up `arduino_ppk_usb.ino` and edit PPK_VERSION to match your keyboard (5 for V, or 3 for III).  Set the device to Arduino Leonardo in the IDE, plug in your cable, and hit upload.  If it can't find a device, you may need to reset it first by grounding the RST pin.
 
 Unplug/replug the cable and it should be fully functional.
 
