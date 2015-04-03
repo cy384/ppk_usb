@@ -9,8 +9,8 @@ parts list
 * Pro Micro Arduino-compatible device ([Sparkfun](https://www.sparkfun.com/products/12640) or [eBay](http://www.ebay.com/sch/i.html?_nkw=pro%20micro%20atmega32u4)).
 * 10k ohm 1/4W resistor
 * ~26 AWG solid core wire (I got mine from a dead ethernet cable)
-* 3D printed top part (either the V or III version, see below)
-* 3D printed bottom part (same for both)
+* 3D printed top part (either the V or III version, see below, print it yourself or grab one on [Shapeways](http://www.shapeways.com/designer/cy384))
+* 3D printed bottom part (same for both, print it yourself or grab one on [Shapeways](http://www.shapeways.com/designer/cy384))
 
 hardware variants
 -----------------
