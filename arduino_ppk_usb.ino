@@ -10,16 +10,37 @@
 
 #include <SoftwareSerial.h>
 
-// pin definitions
+// set to 3 for III hardware, or 5 for V hardware
+#define PPK_VERSION 3
+
+#if PPK_VERSION == 3
+#define VCC_PIN       2
+#define RX_PIN        8
+#define RTS_PIN       4
+#define DCD_PIN       5
+#define GND_PIN       6
+#endif
+
+#if PPK_VERSION == 5
 #define VCC_PIN       7
 #define RX_PIN        8
 #define RTS_PIN       5
 #define DCD_PIN       4
 #define GND_PIN       2
-#define PULLDOWN_PIN 15
+#endif
 
+#define PULLDOWN_PIN  15
 // set this to any unused pin
-#define TX_PIN       11
+#define TX_PIN        11
+
+#if (PPK_VERSION != 3) && (PPK_VERSION != 5)
+#error
+#error
+#error    you did not set your ppk version!
+#error    read the instructions or read the code!
+#error
+#error
+#endif
 
 // convenience masks
 #define UPDOWN_MASK 0b10000000
@@ -194,8 +215,6 @@ void boot_keyboard()
 
   // wait for keyboard to signal readiness, then enable
   while(digitalRead(DCD_PIN) != HIGH) {;};
-
-  pinMode(RTS_PIN, INPUT);
 
   if (digitalRead(RTS_PIN) == LOW)
   {
