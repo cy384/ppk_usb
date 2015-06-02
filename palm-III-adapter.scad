@@ -7,10 +7,9 @@ module main_hull()
 
 module socket()
 {
-	translate ([0, 0, 3.30]) union()
+	translate ([0, 0, 3.30])
 	{
 		cube(size = [26.50, 7.00, 15.00], center = true);
-		
 	};
 }
 
