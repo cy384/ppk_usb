@@ -13,6 +13,9 @@
 // set to 3 for III hardware, or 5 for V hardware
 #define PPK_VERSION 3
 
+// set to 1 to enable debug mode, which notes to the arduino console at 9600
+#define PPK_DEBUG 0
+
 #if PPK_VERSION == 3
 #define VCC_PIN       2
 #define RX_PIN        8
@@ -197,6 +200,14 @@ void config_fnkeymap()
 
 void boot_keyboard()
 {
+  if (PPK_DEBUG)
+  {
+    // delay for a bit to allow for opening serial monitor etc.
+    for (int i = 0; i < 15; delay(1000 + i++)) Serial.print(".");
+
+    Serial.println("beginning keyboard boot sequence");
+  }
+
   pinMode(VCC_PIN, OUTPUT);
   pinMode(GND_PIN, OUTPUT);
   pinMode(PULLDOWN_PIN, OUTPUT);
@@ -213,8 +224,14 @@ void boot_keyboard()
   keyboard_serial.begin(9600);
   keyboard_serial.listen();
 
-  // wait for keyboard to signal readiness, then enable
+  if (PPK_DEBUG) Serial.print("waiting for keyboard response...");
+
   while(digitalRead(DCD_PIN) != HIGH) {;};
+
+  if (PPK_DEBUG) Serial.println(" done");
+
+
+  if (PPK_DEBUG) Serial.print("finishing handshake...");
 
   if (digitalRead(RTS_PIN) == LOW)
   {
@@ -233,25 +250,44 @@ void boot_keyboard()
 
   delay(5);
 
-  // expect to read in keyboard ready code
+  Serial.println(" done");
+
+  if (PPK_DEBUG) Serial.print("waiting for keyboard serial ID...");
+
   while (keyboard_serial.available() < 2) {;};
+
+  if (PPK_DEBUG) Serial.println(" done");
 
   int byte1 = keyboard_serial.read();
   int byte2 = keyboard_serial.read();
 
-  if (!((byte1 == 0xFA) && (byte2 == 0xFD))) while (1) {;};
+  if (!((byte1 == 0xFA) && (byte2 == 0xFD)))
+  {
+    if (PPK_DEBUG) Serial.println("got wrong bytes? giving up here");
+
+    while (1) {;};
+  }
 
   last_comm = millis();
 }
 
 void setup()  
 {
+  if (PPK_DEBUG)
+  {
+    Serial.begin(9600);
+    Serial.print("compiled in debug mode with PPK_VERSION ");
+    Serial.println(PPK_VERSION);
+  }
+
   config_keymap();
   config_fnkeymap();
 
   boot_keyboard();
 
   Keyboard.begin();
+
+  if (PPK_DEBUG) Serial.println("setup completed");
 }
 
 void loop()
@@ -288,10 +324,22 @@ void loop()
         {
           if (key_up)
           {
+            if (PPK_DEBUG)
+            {
+              Serial.print("key released: ");
+              Serial.println(key_code);
+            }
+
             Keyboard.release(key_code);
           }
           else
           {
+            if (PPK_DEBUG)
+            {
+              Serial.print("key pressed: ");
+              Serial.println(key_code);
+            }
+
             Keyboard.press(key_code);
           }
         }
@@ -300,6 +348,12 @@ void loop()
           // special case the Fn key
           if ((key_byte & MAP_MASK) == 34)
           {
+            if (PPK_DEBUG)
+            {
+              Serial.print("Fn key down: ");
+              Serial.println(!key_up);
+            }
+
             fn_key_down = !key_up;
           }
         }
@@ -314,6 +368,8 @@ void loop()
     // reboot if no recent comms, otherwise keyboard falls asleep
     if ((millis() - last_comm) > TIMEOUT)
     {
+      if (PPK_DEBUG) Serial.println("rebooting keyboard for timeout");
+
       digitalWrite(VCC_PIN, LOW);
       boot_keyboard();
     }
