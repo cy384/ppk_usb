@@ -196,6 +196,18 @@ void config_fnkeymap()
   fn_key_map[0b01010011] = KEY_END; // right arrow
   fn_key_map[0b01001001] = KEY_PAGE_UP; // up arrow
   fn_key_map[0b00011001] = KEY_ESC; // tab key
+  fn_key_map[0b00000000] = KEY_F1; // 1
+  fn_key_map[0b00000001] = KEY_F2; // 2
+  fn_key_map[0b00000010] = KEY_F3; // 3
+  fn_key_map[0b00000100] = KEY_F4; // 4
+  fn_key_map[0b00000101] = KEY_F5; // 5
+  fn_key_map[0b00000110] = KEY_F6; // 6
+  fn_key_map[0b00000111] = KEY_F7; // 7
+  fn_key_map[0b00110100] = KEY_F8; // 8
+  fn_key_map[0b00110101] = KEY_F9; // 9
+  fn_key_map[0b00110110] = KEY_F10; // 0
+  fn_key_map[0b00110000] = KEY_F11; // -
+  fn_key_map[0b00110001] = KEY_F12; // =
 }
 
 void boot_keyboard()
