@@ -369,6 +369,13 @@ void loop()
 
             fn_key_down = !key_up;
           }
+          else if (PPK_DEBUG && !key_up)
+          {
+            String byte_string = "Undefined key pressed: [" + String("0b00000000").substring(0, 10 - String(key_byte, BIN).length());
+            Serial.print(byte_string);
+            Serial.print(key_byte, BIN);
+            Serial.println("]");
+          }
         }
       }
 
