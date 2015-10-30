@@ -195,7 +195,7 @@ void config_fnkeymap()
   fn_key_map[0b01010010] = KEY_PAGE_DOWN; // down arrow
   fn_key_map[0b01010011] = KEY_END; // right arrow
   fn_key_map[0b01001001] = KEY_PAGE_UP; // up arrow
-  fn_key_map[0b00000000] = KEY_ESC; // number row 1 key
+  fn_key_map[0b00011001] = KEY_ESC; // tab key
 }
 
 void boot_keyboard()
