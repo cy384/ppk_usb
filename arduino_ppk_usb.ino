@@ -208,6 +208,7 @@ void config_fnkeymap()
   fn_key_map[0b00110110] = KEY_F10; // 0
   fn_key_map[0b00110000] = KEY_F11; // -
   fn_key_map[0b00110001] = KEY_F12; // =
+  fn_key_map[0b00000011] = '~'; // z
 }
 
 void boot_keyboard()
