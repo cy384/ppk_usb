@@ -229,23 +229,23 @@ void print_keychange(char key_byte, char key_code, int key_up)
 
   if (key_code)
   {
-      print_byte_bin(key_code);
+    print_byte_bin(key_code);
 
-      if(PRINTABLE_CHAR(key_code))
-      {
-        Serial.print(" (");
-        Serial.print(key_code);
-        Serial.print(")");
-      }
-      else
-      {
-        Serial.print(" (unprintable)");
-      }
+    if(PRINTABLE_CHAR(key_code))
+    {
+      Serial.print(" (");
+      Serial.print(key_code);
+      Serial.print(")");
+    }
+    else
+    {
+      Serial.print(" (unprintable)");
+    }
   }
   // Fn has no keycode, special case it
   else if (key_byte == 34)
   {
-      Serial.print("Fn");
+    Serial.print("Fn");
   }
   else
   {
