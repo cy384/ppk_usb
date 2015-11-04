@@ -54,6 +54,9 @@
 // wait this many milliseconds before making sure keyboard is still awake
 #define TIMEOUT 500000
 
+// macro for testing if a char is printable ASCII
+#define PRINTABLE_CHAR(x) ((x >= 32) && (x <= 126))
+
 SoftwareSerial keyboard_serial(RX_PIN, TX_PIN, true); // RX, TX, inverted
 
 char key_map[128] = { 0 };
@@ -217,6 +220,41 @@ void print_byte_bin(char bin_byte)
   for (int i = 7; i > -1; i--) Serial.print(int((bin_byte & (1 << i)) >> i));
 }
 
+void print_keychange(char key_byte, char key_code, int key_up)
+{
+  if (key_up) Serial.print("released: "); else Serial.print("pressed:  ");
+  print_byte_bin(key_byte);
+
+  Serial.print(" mapped to ");
+
+  if (key_code)
+  {
+      print_byte_bin(key_code);
+
+      if(PRINTABLE_CHAR(key_code))
+      {
+        Serial.print(" (");
+        Serial.print(key_code);
+        Serial.print(")");
+      }
+      else
+      {
+        Serial.print(" (unprintable)");
+      }
+  }
+  // Fn has no keycode, special case it
+  else if (key_byte == 34)
+  {
+      Serial.print("Fn");
+  }
+  else
+  {
+    Serial.print("nothing");
+  }
+
+  Serial.println("");
+}
+
 void boot_keyboard()
 {
   if (PPK_DEBUG)
@@ -339,26 +377,16 @@ void loop()
       }
       else
       {
+        if (PPK_DEBUG) print_keychange(key_byte & MAP_MASK, key_code, key_up);
+
         if (key_code != 0)
         {
           if (key_up)
           {
-            if (PPK_DEBUG)
-            {
-              Serial.print("key released: ");
-              Serial.println(key_code);
-            }
-
             Keyboard.release(key_code);
           }
           else
           {
-            if (PPK_DEBUG)
-            {
-              Serial.print("key pressed: ");
-              Serial.println(key_code);
-            }
-
             Keyboard.press(key_code);
           }
         }
@@ -367,19 +395,7 @@ void loop()
           // special case the Fn key
           if ((key_byte & MAP_MASK) == 34)
           {
-            if (PPK_DEBUG)
-            {
-              Serial.print("Fn key down: ");
-              Serial.println(!key_up);
-            }
-
             fn_key_down = !key_up;
-          }
-          else if (PPK_DEBUG && !key_up)
-          {
-            Serial.print("undefined key pressed: [");
-            print_byte_bin(key_byte);
-            Serial.println("]");
           }
         }
       }
