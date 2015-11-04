@@ -210,6 +210,13 @@ void config_fnkeymap()
   fn_key_map[0b00110001] = KEY_F12; // =
 }
 
+void print_byte_bin(char bin_byte)
+{
+  Serial.print("0b");
+
+  for (int i = 7; i > -1; i--) Serial.print(int((bin_byte & (1 << i)) >> i));
+}
+
 void boot_keyboard()
 {
   if (PPK_DEBUG)
@@ -370,9 +377,8 @@ void loop()
           }
           else if (PPK_DEBUG && !key_up)
           {
-            String byte_string = "Undefined key pressed: [" + String("0b00000000").substring(0, 10 - String(key_byte, BIN).length());
-            Serial.print(byte_string);
-            Serial.print(key_byte, BIN);
+            Serial.print("undefined key pressed: [");
+            print_byte_bin(key_byte);
             Serial.println("]");
           }
         }
