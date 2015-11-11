@@ -1,4 +1,14 @@
-// a 3d printable adapter for palm-III era devices
+/*
+ * ppk_usb
+ *
+ * Copyright (C) 2014 cy384
+ * All rights reserved.
+ *
+ * This software may be modified and distributed under the terms
+ * of the BSD license. See the LICENSE file for details.
+ */
+
+// 3d printable adapter for palm-III era devices
 
 module main_hull()
 {

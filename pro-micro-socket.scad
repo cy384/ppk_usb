@@ -1,4 +1,14 @@
-// a 3d printable adapter for the pro micro board
+/*
+ * ppk_usb
+ *
+ * Copyright (C) 2014 cy384
+ * All rights reserved.
+ *
+ * This software may be modified and distributed under the terms
+ * of the BSD license. See the LICENSE file for details.
+ */
+
+// 3d printable adapter for the pro micro board
 
 use <palm-III-adapter.scad>
 use <palm-V-adapter.scad>
