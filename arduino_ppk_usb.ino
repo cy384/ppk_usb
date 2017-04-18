@@ -213,6 +213,7 @@ void config_fnkeymap()
   fn_key_map[0b00110110] = KEY_F10; // 0
   fn_key_map[0b00110000] = KEY_F11; // -
   fn_key_map[0b00110001] = KEY_F12; // =
+  fn_key_map[0b00000011] = '~'; // z
 }
 
 void print_byte_bin(char bin_byte)
@@ -398,6 +399,13 @@ void loop()
           if ((key_byte & MAP_MASK) == 34)
           {
             fn_key_down = !key_up;
+          }
+          else if (PPK_DEBUG && !key_up)
+          {
+            String byte_string = "Undefined key pressed: [" + String("0b00000000").substring(0, 10 - String(key_byte, BIN).length());
+            Serial.print(byte_string);
+            Serial.print(key_byte, BIN);
+            Serial.println("]");
           }
         }
       }
