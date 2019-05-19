@@ -10,6 +10,8 @@
 
 // Arduino USB HID adapter for the Palm Portable Keyboard
 
+// If this include causes an error Arduino, just comment it out
+#include <Keyboard.h>
 #include <SoftwareSerial.h>
 
 // set to 3 for III hardware, or 5 for V hardware
