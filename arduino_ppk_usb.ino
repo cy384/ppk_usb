@@ -310,8 +310,8 @@ void boot_keyboard()
   }
 
   delay(5);
-
-  Serial.println(" done");
+  
+  if (PPK_DEBUG) Serial.println(" done");
 
   if (PPK_DEBUG) Serial.print("waiting for keyboard serial ID...");
 
